@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/in_ads" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
