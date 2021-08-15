@@ -10,10 +10,11 @@ version=1.0
 author=Sander Pukk
 email=sander.pukk@gmail.com
 
-about=This plugin offers a basic aadress search from Estonian Land Board and highlights the response location on the map.
+about=This plugin offers a basic aadress search from Estonian Land Board and highlights the response location on the map. https://geoportaal.maaamet.ee/eng/Services/In-ADS-p660.html
+
 
 tracker=http://bugs
-repository=http://repo
+repository=https://github.com/sanderpukk/in_ads_search
 # End of mandatory metadata
 
 # Recommended items:
@@ -25,7 +26,7 @@ hasProcessingProvider=no
 # Tags are comma separated with spaces allowed
 tags=python
 
-homepage=http://homepage
+homepage=https://github.com/sanderpukk/in_ads_search
 category=Web
 icon=icon.png
 # experimental flag

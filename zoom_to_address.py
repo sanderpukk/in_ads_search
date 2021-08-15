@@ -51,14 +51,11 @@ class ZoomToAddress:
         self.canvas.refresh()
         return pt
 
-
-
     def zoomToCoordinates(self):
         keyAddress = self.dialog.response_list.currentItem().text()
-        print()
-        full_response = self.api_call.search_dictionary[keyAddress]
-        lest_x = full_response['viitepunkt_y']
-        lest_y = full_response['viitepunkt_x']
-
-        self.zoomTo(QgsCoordinateReferenceSystem("EPSG:3301"), lest_x, lest_y)
+        if keyAddress != 'No match found':
+            full_response = self.api_call.search_dictionary[keyAddress]
+            lest_x = full_response['viitepunkt_y']
+            lest_y = full_response['viitepunkt_x']
+            self.zoomTo(QgsCoordinateReferenceSystem("EPSG:3301"), lest_x, lest_y)
 

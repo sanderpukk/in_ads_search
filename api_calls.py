@@ -30,15 +30,26 @@ class ApiCalls:
 
     def formatResponse(self, request_data):
         self.clearPreviousSearch()
-        self.search_responses = request_data.json()['addresses']
-        for full_response in self.search_responses:
-            taisaadress = full_response['taisaadress']
-            self.search_addresses.append(taisaadress)
-            self.search_dictionary[taisaadress] = full_response
+        try:
+            self.search_responses = request_data.json()['addresses']
+            for full_response in self.search_responses:
+                taisaadress = full_response['taisaadress']
+                self.search_addresses.append(taisaadress)
+                self.search_dictionary[taisaadress] = full_response
+        except (IndexError, KeyError, TypeError):
+        # data does not have the inner structure you expect
+            self.dialog.response_list.addItem("No match found")
 
     def displayAddress(self):
         self.dialog.response_list.clear()
-        self.dialog.response_list.addItems(self.search_addresses)
+        # Just to make it visually better, limiting the response display list
+        if len(self.search_addresses) >= 7:
+            for x in range(7):
+                self.dialog.response_list.addItem(self.search_addresses[x])
+        elif len(self.search_addresses) >= 1:
+            self.dialog.response_list.addItems(self.search_addresses)
+        else:
+           self.dialog.response_list.addItem("No match found")
 
     def searchAddress(self, term):
         self.search_term = term
